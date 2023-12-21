@@ -47,22 +47,13 @@ class _SewaState extends State<Sewa> {
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.only(top: 44, left: 4),
+                    padding: const EdgeInsets.only(top: 52, left: 4),
                     color: Colors.blue, // Latar belakang biru untuk gambar 'Name'
                     child: Row(
                       children: [
                         Image.asset('img/Nama.png', width: 70),
                         const SizedBox(width: 176),
-                        GestureDetector(
-                          onTap: () {
-                            
-                          },
-                          child: const Icon(
-                            Icons.search,
-                            color: Colors.white,
-                            size: 40,
-                          ),
-                        ),
+                        
                       ],
                       
                     ),
@@ -72,10 +63,10 @@ class _SewaState extends State<Sewa> {
             ),
             Container(
           width: 356,
-          height: 710,
+          height: 700,
         child : Container(
                 margin: const EdgeInsets.only(
-                  top: 10,
+                  top: 60,
                   bottom: 5,
                   left: 20,
                   right: 20,

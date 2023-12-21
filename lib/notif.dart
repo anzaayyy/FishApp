@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Drawer.dart';
 import 'package:flutter_application_1/Navbar.dart';
 
 class Notif extends StatefulWidget {
@@ -9,10 +10,12 @@ class Notif extends StatefulWidget {
 }
 
 class _NotifState extends State<Notif> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      endDrawer: sidebar(),
+      key: _scaffoldKey,
       body: Stack(
         children: [
           Container(
@@ -54,8 +57,8 @@ class _NotifState extends State<Notif> {
                         Image.asset('img/Nama.png', width: 70),
                         const SizedBox(width: 176),
                         GestureDetector(
-                          onTap: () {
-                            
+                            onTap: () {
+                            _scaffoldKey.currentState?.openEndDrawer();
                           },
                           child: const Icon(
                             Icons.menu_rounded,

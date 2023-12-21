@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Beranda.dart';
+//import 'package:flutter_application_1/Beranda.dart';
 import 'package:flutter_application_1/Navbar.dart';
-import 'package:flutter_application_1/Sewa.dart';
+//import 'package:flutter_application_1/Sewa.dart';
 import 'package:flutter_application_1/login.dart';
 import 'package:provider/provider.dart';
-//import 'package:flutter_application_1/listView.dart';
-//import 'api2.dart';
 import 'Rama.dart';
 void main(List<String> args) {
   runApp(

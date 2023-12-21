@@ -101,6 +101,14 @@ flutter:
     - family: Komika
       fonts:
         - asset: fonts/KOMTIT__.ttf
+
+    - family: Little Boy
+      fonts:
+        - asset: fonts/Little Boy.ttf
+
+    - family: MouseMemoirs
+      fonts:
+        - asset: fonts/MouseMemoirs-Regular.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

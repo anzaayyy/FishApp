@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Drawer.dart';
 import 'package:flutter_application_1/Sewa.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
@@ -53,7 +54,7 @@ class Beranda extends StatefulWidget {
 class _BerandaState extends State<Beranda> {
   String _suhuCuaca = '';
   String _area = '';
-  //PageController _pageController = PageController();
+  
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -101,11 +102,7 @@ class _BerandaState extends State<Beranda> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: Drawer(
-        backgroundColor: const Color.fromARGB(52, 0, 0, 0),
-        width: 250,
-        surfaceTintColor: Color.fromARGB(255, 255, 255, 255),
-      ),
+      endDrawer: sidebar(),
       key: _scaffoldKey,
       body: Stack(
         children: [

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Beranda.dart';
-import 'package:flutter_application_1/login.dart';
+import 'package:flutter_application_1/History.dart';
 import 'package:flutter_application_1/notif.dart';
 
 class Navbar extends StatefulWidget {
@@ -13,7 +13,7 @@ class Navbar extends StatefulWidget {
 class _NavbarState extends State<Navbar> {
   final List<Widget> _pages = [
     const Beranda(),
-    const Login(),
+    const History(),
     const Notif(),
     
   ];
