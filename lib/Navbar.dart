@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Beranda.dart';
 import 'package:flutter_application_1/History.dart';
+import 'package:flutter_application_1/Profil.dart';
 import 'package:flutter_application_1/notif.dart';
 
 class Navbar extends StatefulWidget {
@@ -15,6 +16,7 @@ class _NavbarState extends State<Navbar> {
     const Beranda(),
     const History(),
     const Notif(),
+    Profil(),
     
   ];
   int _selectedIndex = 0;

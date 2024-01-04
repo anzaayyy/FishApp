@@ -10,6 +10,7 @@ class Notif extends StatefulWidget {
 }
 
 class _NotifState extends State<Notif> {
+  String a ='Rama';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
@@ -27,78 +28,77 @@ class _NotifState extends State<Notif> {
               ),
             ),
             Column(
-          children: [
+                    children: [
             Container(
               color: Colors.blue, // Latar belakang biru untuk semua elemen
               height: 100, // Tinggi latar belakang biru
               width: MediaQuery.of(context).size.width, // Lebar sesuai dengan lebar layar
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  GestureDetector(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 23, right: 5, left: 5),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    GestureDetector(
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) =>const Navbar()));
                     },
-                child: Container(
-                      padding: const EdgeInsets.only(top: 30, left: 8),
+                    child: Container(
                       color: Colors.blue, // Latar belakang biru untuk gambar 'PBL'
                       child: Image.asset(
-                      'img/PBL.png',
-                      width: 60,
-                      height: 75,
+                        'img/PBL.png',
+                        width: 60,
+                        height: 75,
                       ),
                     ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(top: 44, left: 4),
-                    color: Colors.blue, // Latar belakang biru untuk gambar 'Name'
-                    child: Row(
-                      children: [
-                        Image.asset('img/Nama.png', width: 70),
-                        const SizedBox(width: 176),
-                        GestureDetector(
-                            onTap: () {
-                            _scaffoldKey.currentState?.openEndDrawer();
-                          },
-                          child: const Icon(
-                            Icons.menu_rounded,
-                            color: Colors.white,
-                            size: 40,
-                          ),
-                        ),
-                      ],
-                      
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-          width: 356,
-          height: 650,
-        child : Container(
-                margin: const EdgeInsets.only(
-                  top: 10,
-                  bottom: 5,
-                  left: 20,
-                  right: 20,
-                ),
-                width: double.infinity,
-                decoration: BoxDecoration (
-                  color: const Color(0x7f000000),
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Color(0x3f000000),
-                      offset: Offset(0, 7),
-                      blurRadius: 3.5,
+                    Image.asset('img/Nama.png', width: 70),
+                    const Expanded(child: SizedBox(width: 1)),
+                    GestureDetector(
+                      onTap: () {
+                        _scaffoldKey.currentState?.openEndDrawer();
+                      },
+                      child: const Icon(
+                        Icons.menu_rounded,
+                        color: Colors.white,
+                        size: 40,
+                      ),
                     ),
                   ],
+                  
                 ),
-        ), 
-        ),
-          ],
-
+              ),
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 10,bottom: 5,left: 20, right: 20 ),
+                    child: Container(
+                        height: 610,
+                        //width: double.infinity,
+                        decoration: BoxDecoration (
+                    color: const Color(0x7f000000),
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color(0x3f000000),
+                        offset: Offset(0, 7),
+                        blurRadius: 3.5,
+                      ),
+                    ],
+                        ),
+                        child: Column(
+                          children: [
+                            Text('$a'),
+                          ],
+                        ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+                    ],
+            
             ),
         ],
       ),

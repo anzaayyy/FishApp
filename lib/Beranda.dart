@@ -6,6 +6,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+
 class ClockWidget extends StatefulWidget {
   @override
   _ClockWidgetState createState() => _ClockWidgetState();
@@ -44,7 +45,7 @@ class _ClockWidgetState extends State<ClockWidget> {
 }
 
 class Beranda extends StatefulWidget {
-  const Beranda({Key? key});
+  const Beranda({super.key});
   
 
   @override
@@ -54,15 +55,12 @@ class Beranda extends StatefulWidget {
 class _BerandaState extends State<Beranda> {
   String _suhuCuaca = '';
   String _area = '';
-  
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
+@override
   void initState() {
     super.initState();
     _fetchCurrentWeather();
   }
-
   void _fetchCurrentWeather() async {
   try {
     final response = await http.get(Uri.parse(
@@ -107,7 +105,6 @@ class _BerandaState extends State<Beranda> {
       body: Stack(
         children: [
           Container(
-              
               decoration: const BoxDecoration(
                 image: DecorationImage(image: AssetImage("img/bck.jpg"),
                 fit: BoxFit.cover,
@@ -122,41 +119,34 @@ class _BerandaState extends State<Beranda> {
               color: Colors.blue, // Latar belakang biru untuk semua elemen
               height: 100, // Tinggi latar belakang biru
               width: MediaQuery.of(context).size.width, // Lebar sesuai dengan lebar layar
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.only(top: 30, left: 8),
-                    color: Colors.blue, // Latar belakang biru untuk gambar 'PBL'
-                    child: Image.asset(
-                      'img/PBL.png',
-                      width: 60,
-                      height: 75,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 23, right: 5, left: 5),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      color: Colors.blue, // Latar belakang biru untuk gambar 'PBL'
+                      child: Image.asset(
+                        'img/PBL.png',
+                        width: 60,
+                        height: 75,
+                      ),
                     ),
-                  ),
-                  Container(
-                    padding:const EdgeInsets.only(top: 44, left: 4),
-                    color: Colors.blue, // Latar belakang biru untuk gambar 'Name'
-                    child: Row(
-                      children: [
-                        Image.asset('img/Nama.png', width: 70),
-                        const SizedBox(width: 176),
-                        GestureDetector(
-                          onTap: () {
-                            _scaffoldKey.currentState?.openEndDrawer();
-                          },
-                          child: const Icon(
-                            Icons.menu_rounded,
-                            color: Colors.white,
-                            size: 40,
-                          ),
-                        ),
-                      ],
-                      
+                    Image.asset('img/Nama.png', width: 70),
+                    Expanded(child: SizedBox(width: 1)),
+                    GestureDetector(
+                      onTap: () {
+                        _scaffoldKey.currentState?.openEndDrawer();
+                      },
+                      child: const Icon(
+                        Icons.menu_rounded,
+                        color: Colors.white,
+                        size: 40,
+                      ),
                     ),
-                  ),
-                ],
-                
+                  ],
+                  
+                ),
               ),
             ),
             
@@ -169,17 +159,14 @@ class _BerandaState extends State<Beranda> {
               ),
               ),
             ),
-            Container(child: Text(
-              '$_area',
+            Text(
+              _area,
               style: const TextStyle(
                 fontSize: 22, fontFamily: 'Komika'
               ),
               ),
-            ),
-            Container(
-              child: Center(
-                child: ClockWidget(),
-              ),
+            Center(
+              child: ClockWidget(),
             ),
             
             
@@ -187,8 +174,10 @@ class _BerandaState extends State<Beranda> {
               padding: const EdgeInsets.only(top: 25),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
+                  children: [ 
+                    Column(
+                      children: [
+                        Container(
                       width: 100,
                       height: 100,
                       decoration: BoxDecoration(
@@ -211,8 +200,39 @@ class _BerandaState extends State<Beranda> {
                        
                       ),
                     ),
-                    //SizedBox(width: 10),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 8, bottom: 50),
+                      child: Text('Spot Ikan',style: TextStyle(fontSize: 17, fontFamily: 'Bebas Neue')),
+                    ),
                     Container(
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(227, 221, 221, 221),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>const Sewa()));
+                        },
+                        child: Image.asset('img/kapal.png',
+                        width: 20,
+                        height: 20,
+                        color: Colors.blue,
+                        ),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 8),
+                      child: Text('Sewa Barang',style: TextStyle(fontSize: 17, fontFamily: 'Bebas Neue')),
+                    ),
+                      ],
+                    ),
+                    
+                    //SizedBox(width: 10),
+                    Column(
+                      children: [
+                        Container(
                       width: 100,
                       height: 100,
                       decoration: BoxDecoration(
@@ -234,41 +254,10 @@ class _BerandaState extends State<Beranda> {
                       ),
                       ),
                     ),
-                  ],
-                ),
-            ),
-            Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.only(top: 7,left: 62),
-                  child: const Text('Spot Ikan',style: TextStyle(fontSize: 17, fontFamily: 'Bebas Neue'))),
-                Container(
-                  padding:const EdgeInsets.only(top: 7 ,left: 132),
-                  child:const Text('Pasar Ikan', style: TextStyle(fontSize: 17, fontFamily: 'Bebas Neue'),)),
-              ],
-            ),
-              Container(
-                padding:const EdgeInsets.only(top: 60),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(227, 221, 221, 221),
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>const Sewa()));
-                        },
-                        child: Image.asset('img/kapal.png',
-                        width: 20,
-                        height: 20,
-                        color: Colors.blue,
-                        ),
-                      ),
+                    
+                    const Padding(
+                      padding: EdgeInsets.only(top: 8, bottom: 50),
+                      child: Text('Pasar Ikan', style: TextStyle(fontSize: 17, fontFamily: 'Bebas Neue'),),
                     ),
                     Container(
                       width: 100,
@@ -292,20 +281,16 @@ class _BerandaState extends State<Beranda> {
                         ),
                       ),
                     ),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 8),
+                      child: Text('Suplai Ikan',style: TextStyle(fontSize: 17, fontFamily: 'Bebas Neue')),
+                    )
+                      ],
+                    ),
+                    
                   ],
                 ),
-              ),
-              Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.only(top: 7,left: 54),
-                  child: const Text('Sewa Barang',style: TextStyle(fontSize: 17, fontFamily: 'Bebas Neue'))),
-                Container(
-                  padding: const EdgeInsets.only(top: 7 ,left: 118),
-                  child: const Text('Suplai Ikan',style: TextStyle(fontSize: 17, fontFamily: 'Bebas Neue'))),
-              ],
             ),
-            
           ],
         ),
         ],
