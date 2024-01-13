@@ -5,26 +5,34 @@ import 'package:flutter_application_1/Profil.dart';
 import 'package:flutter_application_1/notif.dart';
 
 class Navbar extends StatefulWidget {
-  const Navbar({super.key});
+  final String token; // Definisikan parameter token
+
+  const Navbar({required this.token, Key? key}) : super(key: key);
 
   @override
   State<Navbar> createState() => _NavbarState();
 }
 
 class _NavbarState extends State<Navbar> {
-  final List<Widget> _pages = [
-    const Beranda(),
-    const History(),
-    const Notif(),
-    Profil(),
-    
-  ];
-  int _selectedIndex = 0;
+  late List<Widget> _pages;
+
+  @override
+  void initState() {
+    super.initState();
+    _pages = [
+      Beranda(token: widget.token),
+      History(token: widget.token),
+      Notif(token: widget.token,),
+      Profil(token: widget.token), // Menggunakan token dari Navbar
+    ];
+  }
+
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(
-        index: _selectedIndex,
+        index: selectedIndex,
         children: _pages,
       ),
         bottomNavigationBar: BottomNavigationBar(
@@ -51,10 +59,10 @@ class _NavbarState extends State<Navbar> {
               backgroundColor: Colors.blue,
             ),
           ],
-          currentIndex: _selectedIndex,
+          currentIndex: selectedIndex,
           onTap: (index){
             setState(() {
-              _selectedIndex = index;
+              selectedIndex = index;
             });
             
           },

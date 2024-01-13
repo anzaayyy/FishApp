@@ -6,7 +6,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Sewa extends StatefulWidget {
-  const Sewa({super.key});
+  final String token;
+  const Sewa({required this.token, Key? key}) :super(key: key);
 
   @override
   State<Sewa> createState() => _SewaState();
@@ -64,7 +65,7 @@ class _SewaState extends State<Sewa> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) =>const Navbar()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) =>Navbar(token: widget.token,)));
                     },
                 child: Container(
                       padding: const EdgeInsets.only(top: 30, left: 8),
@@ -151,7 +152,7 @@ class _SewaState extends State<Sewa> {
                                     fontFamily: 'oswalRegular'
                                     ),
                                   ),
-                                  Text('${data[index].harga}',
+                                  Text('Rp.${data[index].harga}',
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 20,

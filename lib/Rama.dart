@@ -9,7 +9,6 @@ class ApiService {
 
   Future register(
     String name,
-    String username,
     String email,
     String alamat,
     String notelepon,
@@ -26,7 +25,6 @@ class ApiService {
       },
       body: jsonEncode(<String, String>{
         'name': name,
-        'username' : username,
         'email': email,
         'alamat' : alamat,
         'notelepon' : notelepon,
@@ -60,7 +58,6 @@ class _Rama extends State<Rama> {
   bool obscure = true;
   final ApiService apiService = ApiService();
   final TextEditingController nameController = TextEditingController();
-  final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController alamatController = TextEditingController();
   final TextEditingController noteleponController = TextEditingController();
@@ -71,7 +68,6 @@ class _Rama extends State<Rama> {
   try {
     // Validasi input sebelum melakukan registrasi
     if (nameController.text.isEmpty ||
-        usernameController.text.isEmpty ||
         emailController.text.isEmpty ||
         alamatController.text.isEmpty ||
         noteleponController.text.isEmpty ||
@@ -87,7 +83,6 @@ class _Rama extends State<Rama> {
 
     await apiService.register(
       nameController.text,
-      usernameController.text,
       emailController.text,
       alamatController.text,
       noteleponController.text,
@@ -145,21 +140,6 @@ class _Rama extends State<Rama> {
                       controller: nameController,
                       decoration: const InputDecoration(
                         labelText: 'Nama Lengkap',
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue,
-                          width: 3.0,
-                          ),
-                        ),
-                        
-                      ),
-                    ),
-                  ),
-                Padding(
-                    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
-                    child: TextField(
-                      controller: usernameController,
-                      decoration: const InputDecoration(
-                        labelText: 'Username',
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.blue,
                           width: 3.0,

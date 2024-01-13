@@ -2,17 +2,57 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Navbar.dart';
 import 'Drawer.dart';
 import 'EditProfil.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
 
-class Profil extends StatefulWidget{
-const Profil({Key, key});
+class Profil extends StatefulWidget {
+  final String token;
 
-@override
-State<Profil> createState() =>_ProfilState();
+  const Profil({required this.token, Key? key}) : super(key: key);
+
+  @override
+  _ProfilState createState() => _ProfilState();
 }
 
 class _ProfilState extends State<Profil>{
   int _selectedIndex = 0;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  late Map<String, dynamic> detailPengguna = {};
+
+
+  @override
+  void initState() {
+    super.initState();
+    detailPengguna = {};
+    ambilDetailPengguna();
+  }
+
+    Future<void> ambilDetailPengguna() async {
+    final url = Uri.parse('http://10.0.2.2:8000/api/user');
+
+    try {
+      final response = await http.get(
+        url,
+        headers: {'Authorization': 'Bearer ${widget.token}'},
+      );
+
+      if (response.statusCode == 200) {
+        // Berhasil mengambil detail pengguna
+        setState(() {
+          detailPengguna = jsonDecode(response.body);
+        });
+      } else {
+        // Tangani respons error
+        print('Gagal mengambil detail pengguna. Kode status: ${response.statusCode}');
+      }
+    } catch (e) {
+      // Tangani kesalahan jaringan atau lainnya
+      print('Error mengambil detail pengguna: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -44,7 +84,7 @@ class _ProfilState extends State<Profil>{
                       children: [
                         GestureDetector(
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) =>const Navbar()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) =>Navbar(token: widget.token,)));
                         },
                         child: Container(
                           color: Colors.blue, // Latar belakang biru untuk gambar 'PBL'
@@ -82,9 +122,9 @@ class _ProfilState extends State<Profil>{
                       radius: 60,
                       child : Icon(Icons.person, size: 100,),
                     ),
-                    const Padding(  //Nama User
-                      padding: EdgeInsets.only(top: 15, left: 6, bottom: 15),
-                      child: Text("Tama", style: TextStyle(fontFamily: "TimesNewRoman", fontSize: 32, fontWeight: FontWeight.bold)),
+                    Padding(  //Nama User
+                      padding: const EdgeInsets.only(top: 15, left: 6, bottom: 15),
+                      child: Text("${detailPengguna['name']}", style: const TextStyle(fontFamily: "TimesNewRoman", fontSize: 32, fontWeight: FontWeight.bold)),
                     ),
 
                     Padding(  //Button Edit Profil
@@ -94,7 +134,7 @@ class _ProfilState extends State<Profil>{
                         children: [
                           Expanded(
                             child: ElevatedButton.icon(
-                            onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> EditProfil()));}, 
+                            onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> EditProfil(token: widget.token,)));}, 
                             icon: const Icon(Icons.edit), 
                             label: const Text('Edit Profil')))
                         ],
@@ -132,29 +172,29 @@ class _ProfilState extends State<Profil>{
                               children: [
                               Row(   //Lokasi
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 30, top: 15, bottom: 10),
+                                  const Padding(
+                                    padding: EdgeInsets.only(right: 30, top: 15, bottom: 10),
                                     child: Icon(Icons.location_on, size: 40,color: Colors.white,),
                                   ),
-                                  Text("Muncar, Banyuwangi", style: TextStyle(color: Colors.white, fontSize: 20, fontFamily: "TimesNewRoman", fontWeight: FontWeight.bold),)
+                                  Text("${detailPengguna['alamat']}", style: TextStyle(color: Colors.white, fontSize: 20, fontFamily: "TimesNewRoman", fontWeight: FontWeight.bold),)
                                 ],
                               ),
                               Row(   //Nomer Telepon
                                 children: [
-                                  Padding(  
-                                    padding: const EdgeInsets.only(right: 30, top: 15, bottom: 10),
+                                  const Padding(  
+                                    padding: EdgeInsets.only(right: 30, top: 15, bottom: 10),
                                     child: Icon(Icons.phone, size: 40,color: Colors.white,),
                                   ),
-                                  Text("085237359332",style: TextStyle(color: Colors.white, fontSize: 20, fontFamily: "TimesNewRoman", fontWeight: FontWeight.bold)),
+                                  Text("${detailPengguna['notelepon']}",style: TextStyle(color: Colors.white, fontSize: 20, fontFamily: "TimesNewRoman", fontWeight: FontWeight.bold)),
                                 ],
                               ),
                               Row(  //Alamat Email
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 30, top: 15, bottom: 10),
+                                  const Padding(
+                                    padding: EdgeInsets.only(right: 30, top: 15, bottom: 10),
                                     child: Icon(Icons.email, size: 40,color: Colors.white,),
                                   ),
-                                  Text("argentu10@gmail.com", style: TextStyle(color: Colors.white, fontSize: 20, fontFamily: "TimesNewRoman", fontWeight: FontWeight.bold),)
+                                  Text("${detailPengguna['email']}", style: TextStyle(color: Colors.white, fontSize: 20, fontFamily: "TimesNewRoman", fontWeight: FontWeight.bold),)
                                 ],
                               ),
                               ],

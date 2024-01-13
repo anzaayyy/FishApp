@@ -3,7 +3,8 @@ import 'package:flutter_application_1/Drawer.dart';
 import 'package:flutter_application_1/Navbar.dart';
 
 class Notif extends StatefulWidget {
-  const Notif({super.key});
+  final String token;
+  const Notif({required this.token, Key? key}) : super(key: key);
 
   @override
   State<Notif> createState() => _NotifState();
@@ -40,7 +41,7 @@ class _NotifState extends State<Notif> {
                   children: [
                     GestureDetector(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) =>const Navbar()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) =>Navbar(token: widget.token,)));
                     },
                     child: Container(
                       color: Colors.blue, // Latar belakang biru untuk gambar 'PBL'

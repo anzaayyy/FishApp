@@ -1,5 +1,7 @@
 import 'dart:typed_data';
 
+import 'package:xml/xml.dart';
+import 'Navbar.dart';
 import 'Profil.dart';
 import 'pickimage.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +9,8 @@ import 'package:image_picker/image_picker.dart';
 
 
 class EditProfil extends StatefulWidget {
+  final String token;
+  const EditProfil({required this.token, Key? key}) :super(key: key);
   @override
   _EditProfilState createState() => _EditProfilState();
 }
@@ -14,6 +18,7 @@ class EditProfil extends StatefulWidget {
 class _EditProfilState extends State<EditProfil> {
   bool isPasswordTextField = true;
   Uint8List? image;
+  //int selectedIndex = 0;
 
 void SelectImage() async{
   Uint8List img = await pickimage(ImageSource.gallery);
@@ -22,13 +27,15 @@ void SelectImage() async{
   });
 } 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Scaffold(
       appBar: AppBar(
       title: const Text("Edit Profil"),
       leading: IconButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> const Profil()));
+          setState(() {
+              Navigator.pop(context);
+            });
         }, 
         icon: const Icon(Icons.arrow_back, color: Colors.white, size: 40,)),
       ),
@@ -126,7 +133,6 @@ void SelectImage() async{
               buildTextField("Nama", "", false),
               buildTextField("Alamat", "", false),
               buildTextField("Nomer Telepon", "", false),
-              buildTextField("Alamat Email", "", false),
               const SizedBox(height: 10),
                   ]
                 ),
@@ -142,7 +148,7 @@ void SelectImage() async{
                           Expanded( 
                             child: ElevatedButton(
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=> const Profil()));
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=> Profil(token: widget.token,)));
                               }, 
                               child: const Text("SIMPAN")
                               ),

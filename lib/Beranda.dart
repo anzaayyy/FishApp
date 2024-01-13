@@ -45,7 +45,8 @@ class _ClockWidgetState extends State<ClockWidget> {
 }
 
 class Beranda extends StatefulWidget {
-  const Beranda({super.key});
+  final String token;
+  const Beranda({required this.token, Key? key}) : super(key: key);
   
 
   @override
@@ -213,7 +214,7 @@ class _BerandaState extends State<Beranda> {
                       ),
                       child: InkWell(
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>const Sewa()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Sewa(token: widget.token,)));
                         },
                         child: Image.asset('img/kapal.png',
                         width: 20,

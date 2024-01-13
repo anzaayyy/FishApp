@@ -20,7 +20,7 @@ class User {
 
   User(this.email, this.password);
 }
-Future<bool> loginUser(User user) async {
+Future<String?> loginUser(User user) async {
   final url = Uri.parse('http://10.0.2.2:8000/api/login');
   
   try {
@@ -39,11 +39,13 @@ Future<bool> loginUser(User user) async {
         
         if (success) {
           print('Login berhasil: ${response.body}');
-          return true; // Login berhasil
+          String? token = responseData['data']['token']; // Assuming the token is a string
+          return token; // Return the token upon successful login
         } else {
           print('Login gagal. Pesan: ${responseData['masage']}');
-          return false; // Login gagal
         }
+      } else {
+        print('Response data tidak valid.');
       }
     } else {
       print('Gagal login. Status code: ${response.statusCode}');
@@ -52,8 +54,9 @@ Future<bool> loginUser(User user) async {
     print('Error: $e');
   }
 
-  return false; // Return false jika ada kesalahan atau nilai tidak valid
+  return null; // Return null if there is an error or the value is not valid
 }
+
 
 
 
@@ -213,11 +216,16 @@ class _Login extends State<Login> {
     User user = User(email, password);
 
     // Periksa hasil login
-    bool loginSuccess = await loginUser(user);
+    String? token = await loginUser(user);
 
-    if (loginSuccess) {
-      // Jika login berhasil, beralih ke kelas Navbar
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Navbar()));
+     if (token != null) {
+    // Kirim token ke Navbar saat menavigasi
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Navbar(token: token),
+      ),
+    );
     } else {
       // Jika login gagal, Anda dapat menangani sesuai kebutuhan (misalnya, menampilkan pesan kesalahan)
       // Misalnya:

@@ -3,7 +3,8 @@ import 'package:flutter_application_1/Drawer.dart';
 import 'package:flutter_application_1/Navbar.dart';
 
 class History extends StatefulWidget {
-  const History({super.key});
+  final String token;
+  const History({required this.token, Key? key}) :super(key: key);
 
   @override
   State<History> createState() => _HistoryState();
@@ -39,7 +40,7 @@ class _HistoryState extends State<History> {
                   children: [
                     GestureDetector(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) =>const Navbar()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) =>Navbar(token: widget.token,)));
                     },
                     child: Container(
                       color: Colors.blue, // Latar belakang biru untuk gambar 'PBL'
