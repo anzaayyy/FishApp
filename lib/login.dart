@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_application_1/Beranda.dart';
 import 'package:flutter_application_1/Navbar.dart';
 import 'package:flutter_application_1/Rama.dart';
-//import 'package:flutter_application_1/main.dart';
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -12,15 +14,61 @@ class Login extends StatefulWidget {
   
   
 }
+class User {
+  final String email;
+  final String password;
+
+  User(this.email, this.password);
+}
+Future<bool> loginUser(User user) async {
+  final url = Uri.parse('http://10.0.2.2:8000/api/login');
+  
+  try {
+    final response = await http.post(
+      url,
+      body: {
+        'email': user.email,
+        'password': user.password,
+      },
+    );
+
+    if (response.statusCode == 200) {
+      final dynamic responseData = jsonDecode(response.body);
+      if (responseData != null && responseData['succes'] != null) {
+        bool success = responseData['succes'];
+        
+        if (success) {
+          print('Login berhasil: ${response.body}');
+          return true; // Login berhasil
+        } else {
+          print('Login gagal. Pesan: ${responseData['masage']}');
+          return false; // Login gagal
+        }
+      }
+    } else {
+      print('Gagal login. Status code: ${response.statusCode}');
+    }
+  } catch (e) {
+    print('Error: $e');
+  }
+
+  return false; // Return false jika ada kesalahan atau nilai tidak valid
+}
+
+
+
 
 class _Login extends State<Login> {
   bool isChecked2 = false;
   bool obscure =true;
-  
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     
     return Scaffold(
+      
       body: SingleChildScrollView(
         child: Column(
             children: [
@@ -70,6 +118,7 @@ class _Login extends State<Login> {
                       ),
                   ),
                   TextField(
+                    controller: emailController,
                     decoration: InputDecoration(
                       hintText: "Masukan Email Anda",
                       hintStyle: const TextStyle(color: (Colors.grey)),
@@ -98,6 +147,7 @@ class _Login extends State<Login> {
                   ),
                   TextField(
                     obscureText: obscure,
+                    controller: passwordController,
                     decoration: InputDecoration(
                       suffixIcon: GestureDetector(
                         onTap: () {
@@ -156,20 +206,42 @@ class _Login extends State<Login> {
                     padding: const EdgeInsets.only(top: 30.0, bottom: 60.0),
                     child: Center(
                       child: ElevatedButton(
-                        onPressed: () {
-                           Navigator.push(context, MaterialPageRoute(builder: (context) => const Navbar()));
-                          //Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Rama()));
-                        },
-                        style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(300, 43), // Sesuaikan lebar dan tinggi sesuai kebutuhan Anda
-                        ),
-                          child: const Text('Masuk',
-                          style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          ),
-                          ),
-                      ),
+  onPressed: () async {
+    String email = emailController.text;
+    String password = passwordController.text;
+    
+    User user = User(email, password);
+
+    // Periksa hasil login
+    bool loginSuccess = await loginUser(user);
+
+    if (loginSuccess) {
+      // Jika login berhasil, beralih ke kelas Navbar
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Navbar()));
+    } else {
+      // Jika login gagal, Anda dapat menangani sesuai kebutuhan (misalnya, menampilkan pesan kesalahan)
+      // Misalnya:
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Login gagal. Pastikan email dan password benar.'),
+        ),
+      );
+    }
+  },
+  style: ElevatedButton.styleFrom(
+    minimumSize: const Size(300, 43), // Sesuaikan lebar dan tinggi sesuai kebutuhan Anda
+  ),
+  child: const Text('Masuk',
+    style: TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+    ),
+  ),
+),
+
+
+
+
                     ),
                   ),
                   

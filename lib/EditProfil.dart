@@ -28,7 +28,7 @@ void SelectImage() async{
       title: const Text("Edit Profil"),
       leading: IconButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> const notif()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> const Profil()));
         }, 
         icon: const Icon(Icons.arrow_back, color: Colors.white, size: 40,)),
       ),
@@ -142,7 +142,7 @@ void SelectImage() async{
                           Expanded( 
                             child: ElevatedButton(
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=> notif()));
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=> const Profil()));
                               }, 
                               child: const Text("SIMPAN")
                               ),

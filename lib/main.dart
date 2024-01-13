@@ -7,9 +7,14 @@ import 'package:provider/provider.dart';
 import 'Rama.dart';
 void main(List<String> args) {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => DataModel(),
+    MultiProvider(
+      providers: [
+        //ChangeNotifierProvider(create: (context) => AuthProvider()),
+        ChangeNotifierProvider(create: (context) => DataModel())
+        // Add other providers if needed
+      ],
       child: const MyApp(),
+      
     ),
   );
 }
@@ -31,7 +36,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      
       home: Scaffold(
+        
         //body: Sewa(),
 
         //body: Rama()
@@ -40,6 +47,7 @@ class MyApp extends StatelessWidget {
 
         //body: Navbar(),
       ),
+      
     );
   }
 }
@@ -213,7 +221,7 @@ class _FromRegisterState extends State<FromRegister> {
                       child: ElevatedButton(
                         onPressed: () {
                           dataModel.updateData(emailController.text);
-                           Navigator.push(context, MaterialPageRoute(builder: (context) => const Rama()));
+                           Navigator.push(context, MaterialPageRoute(builder: (context) => Rama()));
                           //Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Rama()));
                         },
                         style: ElevatedButton.styleFrom(

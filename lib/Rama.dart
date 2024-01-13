@@ -1,17 +1,131 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/login.dart';
-//import 'package:provider/provider.dart';
-//import 'main.dart';
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
+class ApiService {
+  static const String baseUrl = 'http://10.0.2.2:8000/api';
 
+  Future register(
+    String name,
+    String username,
+    String email,
+    String alamat,
+    String notelepon,
+    String password,
+    String confirm_password,
+    
+    ) async {
+    final String registerUrl = '$baseUrl/register';
 
-class Rama extends StatelessWidget {
-  const Rama({Key? key}) : super(key: key);
+    final response = await http.post(
+      Uri.parse(registerUrl),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'name': name,
+        'username' : username,
+        'email': email,
+        'alamat' : alamat,
+        'notelepon' : notelepon,
+        'password': password,
+        'confirm_password' : confirm_password,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      // Registrasi berhasil
+      print('Registrasi berhasil');
+      print(response.body);
+    } else {
+      // Registrasi gagal
+      print('Registrasi gagal');
+      print(response.body);
+      throw Exception('Gagal melakukan registrasi');
+    }
+  }
+}
+
+class Rama extends StatefulWidget {
+  const Rama({super.key});
+
+  @override
+  State<Rama> createState() => _Rama();
+
+}
+
+class _Rama extends State<Rama> {
+  bool obscure = true;
+  final ApiService apiService = ApiService();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController alamatController = TextEditingController();
+  final TextEditingController noteleponController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmController = TextEditingController();
+
+  void _register() async {
+  try {
+    // Validasi input sebelum melakukan registrasi
+    if (nameController.text.isEmpty ||
+        usernameController.text.isEmpty ||
+        emailController.text.isEmpty ||
+        alamatController.text.isEmpty ||
+        noteleponController.text.isEmpty ||
+        passwordController.text.isEmpty ||
+        confirmController.text.isEmpty) {
+      throw Exception('Harap isi semua bidang.');
+    }
+
+    // Validasi kata sandi dan konfirmasi kata sandi
+    if (passwordController.text != confirmController.text) {
+      throw Exception('Konfirmasi kata sandi tidak sesuai, mohon isi kembali.');
+    }
+
+    await apiService.register(
+      nameController.text,
+      usernameController.text,
+      emailController.text,
+      alamatController.text,
+      noteleponController.text,
+      passwordController.text,
+      confirmController.text
+    );
+
+    // Navigasi ke layar login hanya jika registrasi berhasil
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const Login()),
+    );
+  } catch (e) {
+    // Tangani kesalahan dan beri umpan balik visual
+    print('Error: $e');
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Registrasi Gagal'),
+          content: Text(e.toString()),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Tutup dialog
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+    // Tidak melakukan navigasi ke layar login pada kesalahan registrasi
+  }
+}
 
   @override
   Widget build(BuildContext context) {
-    
-    //final dataModel = Provider.of<DataModel>(context); //digunakan untuk mengambil data yang di inputkan sebelumnya
     return Scaffold(
       body: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -25,10 +139,11 @@ class Rama extends StatelessWidget {
                   child: Image.asset('img/PBL.png', width: 100.0,),
                 ),
               
-                const Padding(
-                    padding: EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
+                Padding(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
                     child: TextField(
-                      decoration: InputDecoration(
+                      controller: nameController,
+                      decoration: const InputDecoration(
                         labelText: 'Nama Lengkap',
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.blue,
@@ -39,10 +154,11 @@ class Rama extends StatelessWidget {
                       ),
                     ),
                   ),
-                const Padding(
-                    padding: EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
+                Padding(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
                     child: TextField(
-                      decoration: InputDecoration(
+                      controller: usernameController,
+                      decoration: const InputDecoration(
                         labelText: 'Username',
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.blue,
@@ -53,10 +169,11 @@ class Rama extends StatelessWidget {
                       ),
                     ),
                   ),
-                const Padding(
-                    padding: EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
+                Padding(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
                     child: TextField(
-                      decoration: InputDecoration(
+                      controller: emailController,
+                      decoration: const InputDecoration(
                         labelText: 'Email',
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.blue,
@@ -67,10 +184,11 @@ class Rama extends StatelessWidget {
                       ),
                     ),
                   ),
-                const Padding(
-                    padding: EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
+                Padding(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
                     child: TextField(
-                      decoration: InputDecoration(
+                      controller: alamatController,
+                      decoration: const InputDecoration(
                         labelText: 'Alamat',
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.blue,
@@ -81,10 +199,11 @@ class Rama extends StatelessWidget {
                       ),
                     ),
                   ),
-                const Padding(
-                    padding: EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
+                Padding(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
                     child: TextField(
-                      decoration: InputDecoration(
+                      controller: noteleponController,
+                      decoration: const InputDecoration(
                         labelText: 'Nomor Telepon',
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.blue,
@@ -95,12 +214,22 @@ class Rama extends StatelessWidget {
                       ),
                     ),
                   ),
-                const Padding(
-                    padding: EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
+                Padding(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
                     child: TextField(
+                      obscureText: obscure,
+                      controller: passwordController,
                       decoration: InputDecoration(
+                        suffixIcon: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            obscure=!obscure;
+                          });
+                        },
+                        child: Icon(obscure?Icons.visibility:Icons.visibility_off),
+                      ),
                         labelText: 'Password',
-                        enabledBorder: UnderlineInputBorder(
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.blue,
                           width: 3.0,
                           ),
@@ -109,10 +238,12 @@ class Rama extends StatelessWidget {
                       ),
                     ),
                   ),
-                const Padding(
-                    padding: EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
+                Padding(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
                     child: TextField(
-                      decoration: InputDecoration(
+                      obscureText: obscure,
+                      controller: confirmController,
+                      decoration: const InputDecoration(
                         labelText: 'Confirm Password',
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.blue,
@@ -151,7 +282,8 @@ class Rama extends StatelessWidget {
                   // Button Next
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const Login()));
+                      _register();
+                      //Navigator.pop(context, MaterialPageRoute(builder: (context)=>const Login()));
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: const Size(165, 50), // Mengatur ukuran minimum tombol

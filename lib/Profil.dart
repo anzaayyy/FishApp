@@ -3,29 +3,14 @@ import 'package:flutter_application_1/Navbar.dart';
 import 'Drawer.dart';
 import 'EditProfil.dart';
 
-
-class Profil extends StatelessWidget {
-  
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: notif(),
-    );
-  }
-}
-
-class notif extends StatefulWidget{
-const notif({Key, key});
+class Profil extends StatefulWidget{
+const Profil({Key, key});
 
 @override
-State<notif> createState() =>_notifState();
+State<Profil> createState() =>_ProfilState();
 }
 
-class _notifState extends State<notif>{
+class _ProfilState extends State<Profil>{
   int _selectedIndex = 0;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
