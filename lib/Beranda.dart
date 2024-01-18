@@ -138,7 +138,7 @@ class _BerandaState extends State<Beranda> {
                       ),
                     ),
                     Image.asset('img/Nama.png', width: 70),
-                    Expanded(child: SizedBox(width: 1)),
+                    const Expanded(child: SizedBox(width: 1)),
                     GestureDetector(
                       onTap: () {
                         _scaffoldKey.currentState?.openEndDrawer();

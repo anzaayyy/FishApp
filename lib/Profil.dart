@@ -165,14 +165,14 @@ class _ProfilState extends State<Profil>{
                         ],
                       ),
                     ),
-                    Text('Detail', style: TextStyle(fontFamily: "TimesNewRoman", fontSize: 20)),
+                    const Text('Detail', style: TextStyle(fontFamily: "TimesNewRoman", fontSize: 20)),
                     Row(  
                       children: [
                         Expanded(
                           child: Container( //Back Detail
                             height: 220,
                             decoration: BoxDecoration(
-                            color: Color.fromARGB(155, 0, 0, 0),
+                            color:const  Color.fromARGB(155, 0, 0, 0),
                               borderRadius: BorderRadius.circular(10)
                             ),
                           child : Padding(
@@ -185,7 +185,7 @@ class _ProfilState extends State<Profil>{
                                     padding: EdgeInsets.only(right: 30, top: 15, bottom: 10),
                                     child: Icon(Icons.location_on, size: 40,color: Colors.white,),
                                   ),
-                                  Text("${detailPengguna['alamat'] ?? 'Data belum diisi'}", style: TextStyle(color: Colors.white, fontSize: 20, fontFamily: "TimesNewRoman", fontWeight: FontWeight.bold),)
+                                  Text("${detailPengguna['alamat'] ?? 'Data belum diisi'}", style: const TextStyle(color: Colors.white, fontSize: 20, fontFamily: "TimesNewRoman", fontWeight: FontWeight.bold),)
                                 ],
                               ),
                               Row(   //Nomer Telepon
@@ -194,7 +194,7 @@ class _ProfilState extends State<Profil>{
                                     padding: EdgeInsets.only(right: 30, top: 15, bottom: 10),
                                     child: Icon(Icons.phone, size: 40,color: Colors.white,),
                                   ),
-                                  Text("${detailPengguna['nomer_telepon']??"Data belum diisi"}",style: TextStyle(color: Colors.white, fontSize: 20, fontFamily: "TimesNewRoman", fontWeight: FontWeight.bold)),
+                                  Text("${detailPengguna['nomer_telepon']??"Data belum diisi"}",style: const TextStyle(color: Colors.white, fontSize: 20, fontFamily: "TimesNewRoman", fontWeight: FontWeight.bold)),
                                 ],
                               ),
                               Row(  //Alamat Email
@@ -203,7 +203,7 @@ class _ProfilState extends State<Profil>{
                                     padding: EdgeInsets.only(right: 30, top: 15, bottom: 10),
                                     child: Icon(Icons.email, size: 40,color: Colors.white,),
                                   ),
-                                  Text("${detailPengguna['email']}", style: TextStyle(color: Colors.white, fontSize: 20, fontFamily: "TimesNewRoman", fontWeight: FontWeight.bold),)
+                                  Text("${detailPengguna['email']}", style: const TextStyle(color: Colors.white, fontSize: 20, fontFamily: "TimesNewRoman", fontWeight: FontWeight.bold),)
                                 ],
                               ),
                               ],

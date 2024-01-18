@@ -32,7 +32,7 @@ class _CheckoutState extends State<Checkout> {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text('OK'),
+            child: const Text('OK'),
           ),
         ],
       );
@@ -77,7 +77,7 @@ Future<void> postDataToServer(String jumlahsewa, String waktu) async {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             "Checkout",
             style: TextStyle(color: Colors.white, fontFamily: 'Times New Roman', fontWeight: FontWeight.bold, fontSize: 24),
           ),
@@ -86,7 +86,7 @@ Future<void> postDataToServer(String jumlahsewa, String waktu) async {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(Icons.arrow_back, color: Colors.white, size: 40),
+            icon: const Icon(Icons.arrow_back, color: Colors.white, size: 40),
           ),
         ),
 
@@ -95,7 +95,7 @@ Future<void> postDataToServer(String jumlahsewa, String waktu) async {
             Container(
               width: 400,
               height: 768,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("img/bck.jpg"),
                   fit: BoxFit.cover,
@@ -105,14 +105,14 @@ Future<void> postDataToServer(String jumlahsewa, String waktu) async {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     
                     child: Container(
                       height: 500,
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(155, 0, 0, 0),
+                        color:const  Color.fromARGB(155, 0, 0, 0),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Padding(
@@ -122,7 +122,7 @@ Future<void> postDataToServer(String jumlahsewa, String waktu) async {
                             children: [
                               Column(
                           children: [
-                            Text('Detail barang'),
+                            const Text('Detail barang'),
                             Row(
                               children: [
                                 Expanded(
@@ -185,7 +185,7 @@ Future<void> postDataToServer(String jumlahsewa, String waktu) async {
                                     ),
                                   ),
                                 ),
-                                SizedBox(width: 16),
+                                const SizedBox(width: 16),
                              // Tambahkan spasi horizontal
                                   //Image.network('${data[index].foto_barang}'),
                             //  Image.network('$endpoint/${data[index].foto_barang.replaceAll(" ", "%20")}', width: 60, height: 80, fit: BoxFit.cover),
@@ -201,29 +201,29 @@ Future<void> postDataToServer(String jumlahsewa, String waktu) async {
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 10 ,right: 90),
+                              const Padding(
+                                padding: EdgeInsets.only(top: 10 ,right: 90),
                                 child: Text(
                                   'Jumlah Barang Yang Akan Disewa',
                                   style: TextStyle(fontFamily: 'Times New Roman', fontSize: 16, color: Colors.white),
                                 ),
                               ),
-                              SizedBox(height: 15),
+                              const SizedBox(height: 15),
                               Padding(
                                 padding: const EdgeInsets.only(right: 5),
                                     child :TextField(
                                   controller: jumlahsewaController,
-                                  style: TextStyle(color: Colors.white, fontSize: 14),
+                                  style: const TextStyle(color: Colors.white, fontSize: 14),
                                   decoration: InputDecoration(
                                     labelText: 'Masukkan Data',
-                                    labelStyle: TextStyle(fontFamily: 'Times New Roman', fontSize: 16, color: Colors.white),
-                                    hintStyle: TextStyle(fontFamily: 'Times New Roman', fontSize: 14, color: Colors.white),
+                                    labelStyle: const TextStyle(fontFamily: 'Times New Roman', fontSize: 16, color: Colors.white),
+                                    hintStyle: const TextStyle(fontFamily: 'Times New Roman', fontSize: 14, color: Colors.white),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.white),
+                                      borderSide: const BorderSide(color: Colors.white),
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.blue),
+                                      borderSide: const BorderSide(color: Colors.blue),
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                   ),
@@ -231,28 +231,28 @@ Future<void> postDataToServer(String jumlahsewa, String waktu) async {
                                   
                                 
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 40, top: 15),
+                              const Padding(
+                                padding: EdgeInsets.only(right: 40, top: 15),
                                 child: Text('Berapa Jam Kamu Akan Menyewa Barang Ini', style: TextStyle(fontFamily: 'Times New Roman', fontSize: 14, color: Colors.white),),
                               ),
                         
-                              SizedBox(height: 15), // Tambah jarak
+                              const SizedBox(height: 15), // Tambah jarak
                               Padding(
                                 padding: const EdgeInsets.only(left: 0, right: 5),
                                 child: TextField(
                                   controller: waktuController,
-                                  style: TextStyle(color: Colors.white, fontSize: 14),
+                                  style: const TextStyle(color: Colors.white, fontSize: 14),
                                   decoration: InputDecoration(
                                     labelText: 'Masukkan Data',
-                                    labelStyle: TextStyle(fontFamily: 'Times New Roman', fontSize: 16, color: Colors.white),
+                                    labelStyle: const TextStyle(fontFamily: 'Times New Roman', fontSize: 16, color: Colors.white),
                                     hintText: 'Masukkan informasi tambahan (opsional)',
-                                    hintStyle: TextStyle(fontFamily: 'Times New Roman', fontSize: 14, color: Colors.white),
+                                    hintStyle: const TextStyle(fontFamily: 'Times New Roman', fontSize: 14, color: Colors.white),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.white),
+                                      borderSide: const BorderSide(color: Colors.white),
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.blue),
+                                      borderSide: const BorderSide(color: Colors.blue),
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                   ),
@@ -287,9 +287,9 @@ Future<void> postDataToServer(String jumlahsewa, String waktu) async {
                 }
               },
                         style: ElevatedButton.styleFrom(
-                          minimumSize: Size(double.infinity, 40),
+                          minimumSize: const Size(double.infinity, 40),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Sewa Sekarang',
                           style: TextStyle(fontFamily: 'Times New Roman', fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
                         ),

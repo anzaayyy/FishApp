@@ -27,11 +27,11 @@ class Sidebar extends StatelessWidget {
           ),
         ),
         Container(
-          padding: EdgeInsets.only(top: 16),
+          padding: const EdgeInsets.only(top: 16),
           child: ListTile(
-            visualDensity: VisualDensity(horizontal: -4),
-            leading: Icon(Icons.logout, size: 35, weight: 5,),
-            title: Text('Keluar', style: TextStyle(color: Colors.white, fontSize: 26, fontFamily: "MouseMemoirs")),
+            visualDensity: const VisualDensity(horizontal: -4),
+            leading: const Icon(Icons.logout, size: 35, weight: 5,),
+            title: const Text('Keluar', style: TextStyle(color: Colors.white, fontSize: 26, fontFamily: "MouseMemoirs")),
             iconColor: Colors.white,
             onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context)=> const Login()));
@@ -41,9 +41,9 @@ class Sidebar extends StatelessWidget {
         Container(
           padding: EdgeInsets.only(top: 5),
           child: ListTile(
-            visualDensity: VisualDensity(horizontal: -4),
-            leading: Icon(Icons.people, size: 35, weight: 5,),
-            title: Text('Tentang Kami', style: TextStyle(color: Colors.white, fontSize: 26, fontFamily: "MouseMemoirs")),
+            visualDensity: const VisualDensity(horizontal: -4),
+            leading: const Icon(Icons.people, size: 35, weight: 5,),
+            title: const Text('Tentang Kami', style: TextStyle(color: Colors.white, fontSize: 26, fontFamily: "MouseMemoirs")),
             iconColor: Colors.white,
             onTap: () {
             print("Tentang Kami");

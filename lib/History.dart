@@ -22,7 +22,7 @@ class _HistoryState extends State<History> {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text('Detail'),
+        title: const Text('Detail'),
         content: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -96,7 +96,7 @@ class _HistoryState extends State<History> {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text('Close'),
+            child: const Text('Close'),
           ),
         ],
       );
@@ -272,21 +272,21 @@ class _HistoryState extends State<History> {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 16),
+                            const SizedBox(width: 16),
                          // Tambahkan spasi horizontal
-                            Padding(
-                              padding: const EdgeInsets.only(right: 10),
-                              child: Column(
-                                children: [
-                                  // Image.network(
-                                  //   '${data[index].foto_barang}',
-                                  //   width: 60,
-                                  //   height: 90,
-                                  // ),
+                            // Padding(
+                            //   padding: const EdgeInsets.only(right: 10),
+                            //   child: Column(
+                            //     children: [
+                            //       // Image.network(
+                            //       //   '${data[index].foto_barang}',
+                            //       //   width: 60,
+                            //       //   height: 90,
+                            //       // ),
                                   
-                                ],
-                              ),
-                            ),
+                            //     ],
+                            //   ),
+                            // ),
                               //Image.network('${data[index].foto_barang}'),
                         //  Image.network('$endpoint/${data[index].foto_barang.replaceAll(" ", "%20")}', width: 60, height: 80, fit: BoxFit.cover),
                           
@@ -317,7 +317,7 @@ class _HistoryState extends State<History> {
                                   ),
                           Padding(
                             padding: const EdgeInsets.only(bottom: 15),
-                            child: Container(height: 3, width: 340,decoration: BoxDecoration(color: Colors.blue),),
+                            child: Container(height: 3, width: 340,decoration: const BoxDecoration(color: Colors.blue),),
                           ),
                         ],
                       )

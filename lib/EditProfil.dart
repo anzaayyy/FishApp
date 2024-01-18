@@ -50,7 +50,7 @@ late Map<String, dynamic> detailPengguna = {};
   }
 
 Future<void> updateUser(String name, String alamat, String notelepon) async {
-  final apiUrl = 'http://10.0.2.2:8000/api/update';
+  String apiUrl = 'http://10.0.2.2:8000/api/update';
 
   final response = await http.post(
     Uri.parse(apiUrl),
@@ -139,7 +139,7 @@ Future<void> updateUser(String name, String alamat, String notelepon) async {
                           ),
                           child: IconButton(
                             onPressed: SelectImage,
-                            icon: Icon(Icons.camera_alt),
+                            icon: const Icon(Icons.camera_alt),
                             color: Colors.white,
                             iconSize: 20,
                           ),

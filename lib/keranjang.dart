@@ -24,7 +24,7 @@ class _KeranjangState extends State<Keranjang> {
 
   void _launchWhatsApp() async {
   final phone = data[0]['nama_telepon_pemilik'];
-  final message = 'Hello, this is a test message!';
+  String message = 'Hello, this is a test message!';
 
   final whatsappUrl = 'https://api.whatsapp.com/send/?phone=$phone&text=$message';
 
@@ -204,21 +204,21 @@ class _KeranjangState extends State<Keranjang> {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 16),
+                            const SizedBox(width: 16),
                          // Tambahkan spasi horizontal
-                            Padding(
-                              padding: const EdgeInsets.only(right: 10),
-                              child: Column(
-                                children: [
-                                  // Image.network(
-                                  //   '${data[index].foto_barang}',
-                                  //   width: 60,
-                                  //   height: 90,
-                                  // ),
+                            // Padding(
+                            //   padding: const EdgeInsets.only(right: 10),
+                            //   child: Column(
+                            //     children: [
+                            //       // Image.network(
+                            //       //   '${data[index].foto_barang}',
+                            //       //   width: 60,
+                            //       //   height: 90,
+                            //       // ),
                                   
-                                ],
-                              ),
-                            ),
+                            //     ],
+                            //   ),
+                            // ),
                               //Image.network('${data[index].foto_barang}'),
                         //  Image.network('$endpoint/${data[index].foto_barang.replaceAll(" ", "%20")}', width: 60, height: 80, fit: BoxFit.cover),
                           
@@ -245,11 +245,11 @@ class _KeranjangState extends State<Keranjang> {
                                       const SizedBox(width: 20,),
                                       ElevatedButton(onPressed: (){
                                         ElevatedButton(
-  onPressed: () {
-    _launchWhatsApp();
-  },
-  child: Text('Open WhatsApp'),
-);
+                                          onPressed: () {
+                                            _launchWhatsApp();
+                                          },
+                                          child: const Text('Open WhatsApp'),
+                                        );
                                       },
                                         style: ElevatedButton.styleFrom(
                                         minimumSize: const Size(60, 20), // Sesuaikan lebar dan tinggi sesuai kebutuhan Anda
@@ -266,7 +266,7 @@ class _KeranjangState extends State<Keranjang> {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(bottom: 15),
-                            child: Container(height: 3, width: 340,decoration: BoxDecoration(color: Colors.blue),),
+                            child: Container(height: 3, width: 340,decoration: const BoxDecoration(color: Colors.blue),),
                           ),
                         ],
                       )

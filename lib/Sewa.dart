@@ -173,7 +173,7 @@ class _SewaState extends State<Sewa> {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 16),
+                            const SizedBox(width: 16),
                          // Tambahkan spasi horizontal
                             Padding(
                               padding: const EdgeInsets.only(right: 10),
@@ -210,7 +210,7 @@ class _SewaState extends State<Sewa> {
                           
                           ],
                         ),
-                      Container(height: 3, width: 340,decoration: BoxDecoration(color: Colors.blue),)
+                      Container(height: 3, width: 340,decoration: const BoxDecoration(color: Colors.blue),)
                       ],
                     );
                   },
