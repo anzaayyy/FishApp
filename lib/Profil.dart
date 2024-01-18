@@ -58,7 +58,7 @@ class _ProfilState extends State<Profil>{
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        endDrawer: sidebar(),
+        endDrawer: Sidebar(),
         key: _scaffoldKey,
         body: Stack(
           children: [
@@ -134,7 +134,16 @@ class _ProfilState extends State<Profil>{
                         children: [
                           Expanded(
                             child: ElevatedButton.icon(
-                            onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> EditProfil(token: widget.token,)));}, 
+                            onPressed: ()async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => EditProfil(token: widget.token),
+      ),
+    );
+    // Setelah kembali dari halaman EditProfil, perbarui detail pengguna
+    await ambilDetailPengguna();
+  },
                             icon: const Icon(Icons.edit), 
                             label: const Text('Edit Profil')))
                         ],
@@ -176,7 +185,7 @@ class _ProfilState extends State<Profil>{
                                     padding: EdgeInsets.only(right: 30, top: 15, bottom: 10),
                                     child: Icon(Icons.location_on, size: 40,color: Colors.white,),
                                   ),
-                                  Text("${detailPengguna['alamat']}", style: TextStyle(color: Colors.white, fontSize: 20, fontFamily: "TimesNewRoman", fontWeight: FontWeight.bold),)
+                                  Text("${detailPengguna['alamat'] ?? 'Data belum diisi'}", style: TextStyle(color: Colors.white, fontSize: 20, fontFamily: "TimesNewRoman", fontWeight: FontWeight.bold),)
                                 ],
                               ),
                               Row(   //Nomer Telepon
@@ -185,7 +194,7 @@ class _ProfilState extends State<Profil>{
                                     padding: EdgeInsets.only(right: 30, top: 15, bottom: 10),
                                     child: Icon(Icons.phone, size: 40,color: Colors.white,),
                                   ),
-                                  Text("${detailPengguna['notelepon']}",style: TextStyle(color: Colors.white, fontSize: 20, fontFamily: "TimesNewRoman", fontWeight: FontWeight.bold)),
+                                  Text("${detailPengguna['nomer_telepon']??"Data belum diisi"}",style: TextStyle(color: Colors.white, fontSize: 20, fontFamily: "TimesNewRoman", fontWeight: FontWeight.bold)),
                                 ],
                               ),
                               Row(  //Alamat Email

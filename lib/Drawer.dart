@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/login.dart';
 
-class sidebar extends StatelessWidget {
+class Sidebar extends StatelessWidget {
+  final Key? key;
+
+  Sidebar({this.key}) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -30,7 +34,7 @@ class sidebar extends StatelessWidget {
             title: Text('Keluar', style: TextStyle(color: Colors.white, fontSize: 26, fontFamily: "MouseMemoirs")),
             iconColor: Colors.white,
             onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> Login()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> const Login()));
           },
           ),
         ),

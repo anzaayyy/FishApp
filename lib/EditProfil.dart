@@ -1,11 +1,13 @@
 import 'dart:typed_data';
+import 'package:flutter_application_1/user.dart';
 
-import 'package:xml/xml.dart';
 import 'Navbar.dart';
-import 'Profil.dart';
 import 'pickimage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
 
 
 class EditProfil extends StatefulWidget {
@@ -18,6 +20,9 @@ class EditProfil extends StatefulWidget {
 class _EditProfilState extends State<EditProfil> {
   bool isPasswordTextField = true;
   Uint8List? image;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController alamatController = TextEditingController();
+  TextEditingController noteleponController = TextEditingController();
   //int selectedIndex = 0;
 
 void SelectImage() async{
@@ -25,7 +30,52 @@ void SelectImage() async{
   setState(() {
     image = img;
   });
-} 
+}
+
+late Map<String, dynamic> detailPengguna = {};
+
+  @override
+  void initState() {
+    super.initState();
+    detailPengguna = {};
+    ambilDetailPengguna();
+    
+  }
+
+  Future<void> ambilDetailPengguna() async {
+    detailPengguna = await UserHelper.ambilDetailPengguna(widget.token);
+    nameController.text = detailPengguna['name'] ?? '';
+    alamatController.text = detailPengguna['alamat'] ?? '';
+    noteleponController.text = detailPengguna['nomer_telepon'] ?? '';
+    
+    setState(() {});
+  }
+
+Future<void> updateUser(String name, String alamat, String notelepon) async {
+  final apiUrl = 'http://10.0.2.2:8000/api/update';
+
+  final response = await http.post(
+    Uri.parse(apiUrl),
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${widget.token}',
+    },
+    body: jsonEncode({
+      'name': name,
+      'alamat': alamat,
+      'nomer_telepon': notelepon,
+    }),
+  );
+
+  if (response.statusCode == 200) {
+    // Pembaruan berhasil, tangani respons sesuai
+    print('Pembaruan berhasil');
+  } else {
+    // Pembaruan gagal, tangani kesalahan
+    print('Pembaruan gagal - ${response.statusCode}: ${response.body}');
+  }
+}
+
   @override
   Widget build(BuildContext context) { 
     return Scaffold(
@@ -123,16 +173,64 @@ void SelectImage() async{
               children: [
               const SizedBox(height:30),
                 Container(
-                  height: 325,
+                  height: 240,
                             decoration: BoxDecoration(
                             color:const Color.fromARGB(155, 255, 255, 255),
                               borderRadius: BorderRadius.circular(10)
                             ),
                  child: Column(
                   children: [
-              buildTextField("Nama", "", false),
-              buildTextField("Alamat", "", false),
-              buildTextField("Nomer Telepon", "", false),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8, left: 8, top: 10 ),
+                      child: TextField(
+                        controller: nameController,
+                        decoration: const InputDecoration(
+                          labelText: 'Nama Lengkap',
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black,
+                            width: 3.0,
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Color.fromARGB(255, 43, 43, 43), width: 3.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8, left: 8, top: 10),
+                      child: TextField(
+                        controller: alamatController,
+                        decoration: const InputDecoration(
+                          labelText: 'Alamat',
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black,
+                            width: 3.0,
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Color.fromARGB(255, 43, 43, 43), width: 3.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8, left: 8, top: 10),
+                      child: TextField(
+                        controller: noteleponController,
+                        decoration: const InputDecoration(
+                          labelText: 'Nomor Telepon',
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black,
+                            width: 3.0,
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Color.fromARGB(255, 43, 43, 43), width: 3.0),
+                          ),
+                        ),
+                      ),
+                    ),
               const SizedBox(height: 10),
                   ]
                 ),
@@ -141,15 +239,22 @@ void SelectImage() async{
             ),
               
               Padding(  //tombol simpan
-                padding: const EdgeInsets.only(left: 5, right: 5),
+                padding: const EdgeInsets.only(left: 5, right: 5, top: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Expanded( 
                             child: ElevatedButton(
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=> Profil(token: widget.token,)));
-                              }, 
+  // Dapatkan nilai dari bidang teks
+  String name = nameController.text; // Implementasikan fungsi untuk mendapatkan nama dari bidang teks
+  String alamat= alamatController.text; // Implementasikan fungsi untuk mendapatkan alamat dari bidang teks
+  String notelepon = noteleponController.text; // Implementasikan fungsi untuk mendapatkan nomor telepon dari bidang teks
+
+  // Panggil fungsi updateUser dengan nilai yang diperoleh
+  updateUser(name, alamat, notelepon);
+  Navigator.pop(context);
+},
                               child: const Text("SIMPAN")
                               ),
                           ),
@@ -170,34 +275,34 @@ void SelectImage() async{
       
     
   }
-    Widget buildTextField(String labelText, String placeholder, bool isPasswordTextField) {
-      return Padding(
-        padding: const EdgeInsets.only(bottom: 15, top: 15, right: 10, left: 10),
-        child: TextFormField(
-          obscureText: isPasswordTextField ? isPasswordTextField:false,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 20,
-            fontFamily: "Times New Roman",
-            fontWeight: FontWeight.bold,
-          ),
-          decoration: InputDecoration(
-            suffixIcon: isPasswordTextField ?
-            IconButton(
-              icon: const Icon(Icons.remove_red_eye, color: Colors.black),
-              onPressed: () {}
-            ): null,
-            contentPadding: const EdgeInsets.only(bottom: 5),
-            labelText: labelText,
-             floatingLabelBehavior: FloatingLabelBehavior.always,
-             hintText: placeholder,
-             hintStyle: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-             )
-          ),
-        ),
-      );
-    }
+    // Widget buildTextField(String labelText, String placeholder, bool isPasswordTextField) {
+    //   return Padding(
+    //     padding: const EdgeInsets.only(bottom: 15, top: 15, right: 10, left: 10),
+    //     child: TextFormField(
+    //       obscureText: isPasswordTextField ? isPasswordTextField:false,
+    //       style: const TextStyle(
+    //         color: Colors.black,
+    //         fontSize: 20,
+    //         fontFamily: "Times New Roman",
+    //         fontWeight: FontWeight.bold,
+    //       ),
+    //       decoration: InputDecoration(
+    //         suffixIcon: isPasswordTextField ?
+    //         IconButton(
+    //           icon: const Icon(Icons.remove_red_eye, color: Colors.black),
+    //           onPressed: () {}
+    //         ): null,
+    //         contentPadding: const EdgeInsets.only(bottom: 5),
+    //         labelText: labelText,
+    //          floatingLabelBehavior: FloatingLabelBehavior.always,
+    //          hintText: placeholder,
+    //          hintStyle: const TextStyle(
+    //           fontSize: 20,
+    //           fontWeight: FontWeight.bold,
+    //           color: Colors.black,
+    //          )
+    //       ),
+    //     ),
+    //   );
+    // }
 }

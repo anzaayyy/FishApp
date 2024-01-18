@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Navbar.dart';
+import 'package:flutter_application_1/checout.dart';
 import 'postData.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -132,6 +133,7 @@ class _SewaState extends State<Sewa> {
                     ),
                   ],
                 ),
+                
                 child : ListView.builder(
                   itemCount: data.length,
                   itemBuilder: (BuildContext context, index) {
@@ -145,21 +147,21 @@ class _SewaState extends State<Sewa> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                  Text(data[index].nama_barang, 
+                                  Text("Nama Barang ${data[index].nama_barang}", 
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 20,
                                     fontFamily: 'oswalRegular'
                                     ),
                                   ),
-                                  Text('Rp.${data[index].harga}',
+                                  Text('Harga : Rp.${data[index].harga}/jam',
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 20,
                                     fontFamily: 'oswalRegular'
                                     ),
                                   ),
-                                  Text('${data[index].kondisi}',
+                                  Text('Kondisi : ${data[index].kondisi}',
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 20,
@@ -177,12 +179,19 @@ class _SewaState extends State<Sewa> {
                               padding: const EdgeInsets.only(right: 10),
                               child: Column(
                                 children: [
-                                  Image.asset(
-                                    'img/PBL.png',
-                                    width: 60,
-                                    height: 90,
-                                  ),
-                                  ElevatedButton(onPressed: (){},
+                                  // Image.network(
+                                  //   'http://10.0.2.2:54322/storage/fotobarang/${data[index].foto_barang}',
+                                  //   width: 60,
+                                  //   height: 90,
+                                  // ),
+                                  ElevatedButton(onPressed: (){
+                                    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Checkout(selectedBarang: data[index], token: widget.token),
+      ),
+    );
+                                  },
                                   style: ElevatedButton.styleFrom(
                                   minimumSize: const Size(60, 20), // Sesuaikan lebar dan tinggi sesuai kebutuhan Anda
                                   ),

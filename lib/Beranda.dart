@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Drawer.dart';
 import 'package:flutter_application_1/Sewa.dart';
+import 'package:flutter_application_1/keranjang.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -56,6 +57,7 @@ class Beranda extends StatefulWidget {
 class _BerandaState extends State<Beranda> {
   String _suhuCuaca = '';
   String _area = '';
+  //String _pressure = '';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 @override
   void initState() {
@@ -71,9 +73,10 @@ class _BerandaState extends State<Beranda> {
       final data = json.decode(response.body);
 
       // Pastikan struktur data sesuai dengan yang Anda harapkan
-      if (data['main'] != null && data['main']['temp'] != null && data['name'] != null) {
+      if (data['main'] != null && data['main']['temp'] != null && data['name'] != null&&data['main']['pressure']!=null && data['main'] != null) {
         // Ubah nilai suhu ke tipe data yang benar
         double temperature = (data['main']['temp'] as num).toDouble();
+        //double pressures = (data['main']['pressure'] as num).toDouble();
         double temperatureCelsius = temperature - 273.15;
 
         // Bulatkan suhu
@@ -84,6 +87,7 @@ class _BerandaState extends State<Beranda> {
             // Gunakan nama area yang sesuai
             _suhuCuaca = '$pembulatanSuhu°C';
             _area = data['name'];
+           // _pressure = '$pressures';
           });
         }
       } else {
@@ -101,7 +105,7 @@ class _BerandaState extends State<Beranda> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: sidebar(),
+      endDrawer: Sidebar(),
       key: _scaffoldKey,
       body: Stack(
         children: [
@@ -166,6 +170,12 @@ class _BerandaState extends State<Beranda> {
                 fontSize: 22, fontFamily: 'Komika'
               ),
               ),
+              // Text(
+              // '$_pressure',
+              // style: const TextStyle(
+              //   fontSize: 22, fontFamily: 'Komika'
+              // ),
+              // ),
             Center(
               child: ClockWidget(),
             ),
@@ -178,7 +188,30 @@ class _BerandaState extends State<Beranda> {
                   children: [ 
                     Column(
                       children: [
-                        Container(
+                    Container(
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(227, 221, 221, 221),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Sewa(token: widget.token,)));
+                        },
+                        child: Image.asset('img/kapal.png',
+                        width: 20,
+                        height: 20,
+                        color: Colors.blue,
+                        ),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 8,  bottom: 50),
+                      child: Text('Sewa Barang',style: TextStyle(fontSize: 17, fontFamily: 'Bebas Neue')),
+                    ),
+
+                    Container(
                       width: 100,
                       height: 100,
                       decoration: BoxDecoration(
@@ -202,30 +235,8 @@ class _BerandaState extends State<Beranda> {
                       ),
                     ),
                     const Padding(
-                      padding: EdgeInsets.only(top: 8, bottom: 50),
-                      child: Text('Spot Ikan',style: TextStyle(fontSize: 17, fontFamily: 'Bebas Neue')),
-                    ),
-                    Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(227, 221, 221, 221),
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Sewa(token: widget.token,)));
-                        },
-                        child: Image.asset('img/kapal.png',
-                        width: 20,
-                        height: 20,
-                        color: Colors.blue,
-                        ),
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 8),
-                      child: Text('Sewa Barang',style: TextStyle(fontSize: 17, fontFamily: 'Bebas Neue')),
+                      padding: EdgeInsets.only(top: 8,),
+                      child: Text('Pasar Ikan',style: TextStyle(fontSize: 17, fontFamily: 'Bebas Neue')),
                     ),
                       ],
                     ),
@@ -242,23 +253,19 @@ class _BerandaState extends State<Beranda> {
                       ),
                       child: InkWell(
                         onTap: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Coming soon!'),
-                            ),
-                          );
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> Keranjang(token: widget.token)));
                         },
-                        child: Image.asset('img/Coming soon.png',
+                        child: Image.asset('img/keranjang.png',
                         width: 20,
                         height: 20,
-                        //color: Colors.blue,
+                        color: Colors.blue,
                       ),
                       ),
                     ),
                     
                     const Padding(
                       padding: EdgeInsets.only(top: 8, bottom: 50),
-                      child: Text('Pasar Ikan', style: TextStyle(fontSize: 17, fontFamily: 'Bebas Neue'),),
+                      child: Text('Keranjang', style: TextStyle(fontSize: 17, fontFamily: 'Bebas Neue'),),
                     ),
                     Container(
                       width: 100,

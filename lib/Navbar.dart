@@ -37,7 +37,7 @@ class _NavbarState extends State<Navbar> {
       ),
         bottomNavigationBar: BottomNavigationBar(
           
-          items: [
+          items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'Home',

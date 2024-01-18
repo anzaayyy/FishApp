@@ -1,0 +1,4 @@
+#Thu Jan 18 21:08:18 WIB 2024
+base.0=C\:\\Users\\user\\Documents\\KULIAH\\KULIAH SEASON 3\\PBL\\FishApp\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

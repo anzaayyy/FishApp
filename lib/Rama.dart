@@ -10,8 +10,6 @@ class ApiService {
   Future register(
     String name,
     String email,
-    String alamat,
-    String notelepon,
     String password,
     String confirm_password,
     
@@ -26,8 +24,6 @@ class ApiService {
       body: jsonEncode(<String, String>{
         'name': name,
         'email': email,
-        'alamat' : alamat,
-        'notelepon' : notelepon,
         'password': password,
         'confirm_password' : confirm_password,
       }),
@@ -59,8 +55,6 @@ class _Rama extends State<Rama> {
   final ApiService apiService = ApiService();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController alamatController = TextEditingController();
-  final TextEditingController noteleponController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmController = TextEditingController();
 
@@ -69,8 +63,6 @@ class _Rama extends State<Rama> {
     // Validasi input sebelum melakukan registrasi
     if (nameController.text.isEmpty ||
         emailController.text.isEmpty ||
-        alamatController.text.isEmpty ||
-        noteleponController.text.isEmpty ||
         passwordController.text.isEmpty ||
         confirmController.text.isEmpty) {
       throw Exception('Harap isi semua bidang.');
@@ -84,8 +76,6 @@ class _Rama extends State<Rama> {
     await apiService.register(
       nameController.text,
       emailController.text,
-      alamatController.text,
-      noteleponController.text,
       passwordController.text,
       confirmController.text
     );
@@ -155,36 +145,6 @@ class _Rama extends State<Rama> {
                       controller: emailController,
                       decoration: const InputDecoration(
                         labelText: 'Email',
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue,
-                          width: 3.0,
-                          ),
-                        ),
-                        
-                      ),
-                    ),
-                  ),
-                Padding(
-                    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
-                    child: TextField(
-                      controller: alamatController,
-                      decoration: const InputDecoration(
-                        labelText: 'Alamat',
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue,
-                          width: 3.0,
-                          ),
-                        ),
-                        
-                      ),
-                    ),
-                  ),
-                Padding(
-                    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
-                    child: TextField(
-                      controller: noteleponController,
-                      decoration: const InputDecoration(
-                        labelText: 'Nomor Telepon',
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.blue,
                           width: 3.0,
