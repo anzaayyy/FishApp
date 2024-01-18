@@ -16,7 +16,7 @@ class Profil extends StatefulWidget {
 }
 
 class _ProfilState extends State<Profil>{
-  int _selectedIndex = 0;
+  //int _selectedIndex = 0;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   late Map<String, dynamic> detailPengguna = {};

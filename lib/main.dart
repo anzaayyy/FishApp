@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter_application_1/Beranda.dart';
-import 'package:flutter_application_1/Navbar.dart';
-import 'package:flutter_application_1/Sewa.dart';
+// import 'package:flutter_application_1/Navbar.dart';
+// import 'package:flutter_application_1/Sewa.dart';
 import 'package:flutter_application_1/login.dart';
 import 'package:provider/provider.dart';
 import 'Rama.dart';

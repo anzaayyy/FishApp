@@ -1,7 +1,5 @@
 import 'dart:typed_data';
 import 'package:flutter_application_1/user.dart';
-
-import 'Navbar.dart';
 import 'pickimage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
