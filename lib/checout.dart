@@ -122,7 +122,7 @@ Future<void> postDataToServer(String jumlahsewa, String waktu) async {
                             children: [
                               Column(
                           children: [
-                            const Text('Detail barang'),
+                            // const Text('Detail barang'),
                             Row(
                               children: [
                                 Expanded(
