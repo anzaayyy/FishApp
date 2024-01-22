@@ -345,7 +345,7 @@
 -keep public class androidx.versionedparcelable.ParcelImpl
 
 # End of content from C:\Users\user\.gradle\caches\transforms-3\47ecd4e588b99ef3b772f04d5aa6c9b7\transformed\versionedparcelable-1.1.1\proguard.txt
-# The proguard configuration file for the following section is C:\Users\user\.gradle\caches\transforms-3\96eface9dbec35e1af9d220df1ec772e\transformed\rules\lib\META-INF\proguard\androidx-annotations.pro
+# The proguard configuration file for the following section is C:\Users\user\.gradle\caches\transforms-3\5a80ec1907982a6fba0760186f8c17dc\transformed\rules\lib\META-INF\proguard\androidx-annotations.pro
 -keep,allowobfuscation @interface androidx.annotation.Keep
 -keep @androidx.annotation.Keep class * {*;}
 
@@ -365,7 +365,7 @@
   @androidx.annotation.DoNotInline <methods>;
 }
 
-# End of content from C:\Users\user\.gradle\caches\transforms-3\96eface9dbec35e1af9d220df1ec772e\transformed\rules\lib\META-INF\proguard\androidx-annotations.pro
+# End of content from C:\Users\user\.gradle\caches\transforms-3\5a80ec1907982a6fba0760186f8c17dc\transformed\rules\lib\META-INF\proguard\androidx-annotations.pro
 # The proguard configuration file for the following section is <unknown>
 -ignorewarnings
 # End of content from <unknown>

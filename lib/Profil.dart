@@ -21,7 +21,6 @@ class _ProfilState extends State<Profil>{
 
   late Map<String, dynamic> detailPengguna = {};
 
-
   @override
   void initState() {
     super.initState();
@@ -134,6 +133,7 @@ class _ProfilState extends State<Profil>{
                         children: [
                           Expanded(
                             child: ElevatedButton.icon(
+                              
                             onPressed: ()async {
     await Navigator.push(
       context,
@@ -144,8 +144,11 @@ class _ProfilState extends State<Profil>{
     // Setelah kembali dari halaman EditProfil, perbarui detail pengguna
     await ambilDetailPengguna();
   },
-                            icon: const Icon(Icons.edit), 
-                            label: const Text('Edit Profil')))
+                            style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue,),
+                            icon: const Icon(Icons.edit, color: Colors.white,), 
+                            label: const Text('Edit Profil',
+                            style: TextStyle(color: Colors.white),)))
                         ],
                       ),
                     ),

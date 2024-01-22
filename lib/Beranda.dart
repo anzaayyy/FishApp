@@ -285,7 +285,7 @@ class _BerandaState extends State<Beranda> {
                         child: Image.asset('img/ikan.png',
                         width: 20,
                         height: 20,
-                        //color: Colors.blue,
+                        color: Colors.blue,
                         ),
                       ),
                     ),

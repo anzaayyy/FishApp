@@ -286,12 +286,14 @@ class _NotifState extends State<Notif> {
                                           _showPopup(context, index);
                                         },
                                         style: ElevatedButton.styleFrom(
+                                          backgroundColor: Colors.blue,
                                         minimumSize: const Size(60, 20), // Sesuaikan lebar dan tinggi sesuai kebutuhan Anda
                                         ),
                                         child: const Text('Detail',
                                         style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,
+                                          color: Colors.white
                                         ),
                                         ),
                                                                           ),

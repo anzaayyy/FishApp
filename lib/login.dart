@@ -11,9 +11,8 @@ class Login extends StatefulWidget {
 
   @override
   State<Login> createState() => _Login();
-  
-  
 }
+
 class User {
   final String email;
   final String password;
@@ -53,7 +52,6 @@ Future<String?> loginUser(User user) async {
   } catch (e) {
     print('Error: $e');
   }
-
   return null; // Return null if there is an error or the value is not valid
 }
 
@@ -122,6 +120,7 @@ class _Login extends State<Login> {
                   ),
                   TextField(
                     controller: emailController,
+                    
                     decoration: InputDecoration(
                       hintText: "Masukan Email Anda",
                       hintStyle: const TextStyle(color: (Colors.grey)),
@@ -131,6 +130,13 @@ class _Login extends State<Login> {
                           width: 3,
                           color: (Colors.grey),
                         ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(45) ,
+                        borderSide: const BorderSide(
+                          color: Colors.blue, 
+                          width: 3.0,
+                          ),
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(45.0),
@@ -159,6 +165,13 @@ class _Login extends State<Login> {
                           });
                         },
                         child: Icon(obscure?Icons.visibility:Icons.visibility_off),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(45) ,
+                        borderSide: const BorderSide(
+                          color: Colors.blue, 
+                          width: 3.0,
+                          ),
                       ),
                       hintText: "Masukan Password Anda",
                       hintStyle: const TextStyle(color: (Colors.grey)),
@@ -197,7 +210,8 @@ class _Login extends State<Login> {
                     onPressed: () {}, 
                     child: const Text('Lupa Password?',
                     style: TextStyle(
-                    fontWeight: FontWeight.bold
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue
                     ),
                   ),
                                 ),
@@ -237,12 +251,14 @@ class _Login extends State<Login> {
     }
   },
   style: ElevatedButton.styleFrom(
+    backgroundColor: Colors.blue,
     minimumSize: const Size(300, 43), // Sesuaikan lebar dan tinggi sesuai kebutuhan Anda
   ),
   child: const Text('Masuk',
     style: TextStyle(
       fontSize: 18,
       fontWeight: FontWeight.bold,
+      color: Colors.white
     ),
   ),
 ),
@@ -275,6 +291,7 @@ class _Login extends State<Login> {
                     style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
+                      color: Colors.blue,
                       ),  
                     ),
                   ),

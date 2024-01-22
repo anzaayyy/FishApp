@@ -1,0 +1,1 @@
+ C:\\Users\\user\\Documents\\KULIAH\\KULIAH\ SEASON\ 3\\PBL\\FishApp\\.dart_tool\\flutter_build\\f351ed3b4e0adfe3c8dcbf3947be2231\\native_assets.yaml: 

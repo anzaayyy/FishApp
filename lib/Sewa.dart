@@ -16,7 +16,6 @@ class Sewa extends StatefulWidget {
 
 class _SewaState extends State<Sewa> {
   late List<Barang> data = [];
-  //String endpoint = 'https://api-generator.retool.com/zjbfWy/data';
   String endpoint = 'http://10.0.2.2:8000/api/barangsewa';
   Future<List<Barang>> fetchData() async {
     final response = await http.get(Uri.parse(endpoint));
@@ -193,12 +192,14 @@ class _SewaState extends State<Sewa> {
     );
                                   },
                                   style: ElevatedButton.styleFrom(
-                                  minimumSize: const Size(60, 20), // Sesuaikan lebar dan tinggi sesuai kebutuhan Anda
+                                    backgroundColor: Colors.blue,
+                                    minimumSize: const Size(60, 20), // Sesuaikan lebar dan tinggi sesuai kebutuhan Anda
                                   ),
                             child: const Text('Sewa',
                             style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
+                            color: Colors.white
                                 ),
                               ),
                             ),

@@ -17,9 +17,6 @@ final String token;
 class _CheckoutState extends State<Checkout> {
   TextEditingController jumlahsewaController = TextEditingController();
   TextEditingController waktuController = TextEditingController();
-  String api ='http://10.0.2.2:8000/api/mulaisewaApi';
-
-
   void showResultDialog(bool success) {
   showDialog(
     context: context,
@@ -41,6 +38,7 @@ class _CheckoutState extends State<Checkout> {
 }
 
 
+String api ='http://10.0.2.2:8000/api/mulaisewaApi';
 Future<void> postDataToServer(String jumlahsewa, String waktu) async {
   try {
     final response = await http.post(
@@ -287,6 +285,7 @@ Future<void> postDataToServer(String jumlahsewa, String waktu) async {
                 }
               },
                         style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue,
                           minimumSize: const Size(double.infinity, 40),
                         ),
                         child: const Text(
