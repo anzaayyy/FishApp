@@ -5,7 +5,7 @@ library {
   maven_library {
     groupId: "androidx.annotation"
     artifactId: "annotation"
-    version: "1.7.0"
+    version: "1.7.1"
   }
   repo_index {
   }
@@ -14,7 +14,7 @@ library {
   maven_library {
     groupId: "androidx.annotation"
     artifactId: "annotation-jvm"
-    version: "1.7.0"
+    version: "1.7.1"
   }
   digests {
     sha256: "\343k\216K\203\223\244\255\307N=J\262*\325\243c\226\360\316\242\344\vW4\352\341I7\337\322$"
@@ -65,10 +65,10 @@ library {
   maven_library {
     groupId: "io.flutter"
     artifactId: "flutter_embedding_release"
-    version: "1.0.0-9064459a8b0dcd32877107f6002cc429a71659d1"
+    version: "1.0.0-6e2ea58a5ccbefcfadc2d4b7b8045fc6c20ab812"
   }
   digests {
-    sha256: "A1\204!\f6\031\"4\352\021\271\027\273\226\250\b\270:\001n5\037 \352\236H\346;p]U"
+    sha256: "\263\311\216:\355\254\207\005\360Q\023\260\326J\2146\227~\256>\217>\354\021\324:|.\337\241\200\272"
   }
   repo_index {
     value: 2
@@ -521,10 +521,10 @@ library {
   maven_library {
     groupId: "io.flutter"
     artifactId: "x86_64_release"
-    version: "1.0.0-9064459a8b0dcd32877107f6002cc429a71659d1"
+    version: "1.0.0-6e2ea58a5ccbefcfadc2d4b7b8045fc6c20ab812"
   }
   digests {
-    sha256: "`\223\305\020\367$6c\351\265\t\372L\240\330\264\331\255\"C\377x\336JY\336\302;\363~\230\374"
+    sha256: "g\206\254g\020\305\326\034\024Z\332g[\267\250RK\247\324\tfm\331\360f)\216X:\r5l"
   }
   repo_index {
     value: 2
@@ -532,7 +532,7 @@ library {
 }
 library {
   digests {
-    sha256: "\3111\313\035\270f\206\307\262~\021!\343]`t\250-\272\022S\214kF\vN\230bHc\316R"
+    sha256: "\376\310\205\255K\210\370D\224\250\244\331\"F\315\250\214Gz\353\353y\225\360\035*\252j\225\246x\275"
   }
 }
 library_dependencies {

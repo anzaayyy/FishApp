@@ -13,8 +13,8 @@ io.flutter.plugins.imagepicker.image_picker_android-lifecycle-viewmodel-2.6.1-11
 io.flutter.plugins.imagepicker.image_picker_android-core-runtime-2.2.0-12 C:\Users\user\.gradle\caches\transforms-3\db3ce0e4102f75753fdc0e9c2753a822\transformed\core-runtime-2.2.0\res
 io.flutter.plugins.imagepicker.image_picker_android-lifecycle-runtime-2.6.1-13 C:\Users\user\.gradle\caches\transforms-3\e97fce397db1acf9b6f475dedfc7d654\transformed\lifecycle-runtime-2.6.1\res
 io.flutter.plugins.imagepicker.image_picker_android-lifecycle-livedata-core-2.6.1-14 C:\Users\user\.gradle\caches\transforms-3\eed11806d4af25229ebcb855da7e9479\transformed\lifecycle-livedata-core-2.6.1\res
-io.flutter.plugins.imagepicker.image_picker_android-main-15 C:\Users\user\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.9+1\android\src\main\res
-io.flutter.plugins.imagepicker.image_picker_android-release-16 C:\Users\user\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.9+1\android\src\release\res
+io.flutter.plugins.imagepicker.image_picker_android-main-15 C:\Users\user\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.9+3\android\src\main\res
+io.flutter.plugins.imagepicker.image_picker_android-release-16 C:\Users\user\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.9+3\android\src\release\res
 io.flutter.plugins.imagepicker.image_picker_android-packaged_res-17 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\flutter_plugin_android_lifecycle\intermediates\packaged_res\release
 io.flutter.plugins.imagepicker.image_picker_android-pngs-18 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\image_picker_android\generated\res\pngs\release
 io.flutter.plugins.imagepicker.image_picker_android-resValues-19 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\image_picker_android\generated\res\resValues\release

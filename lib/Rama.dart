@@ -226,9 +226,13 @@ class _Rama extends State<Rama> {
                       //Navigator.pop(context, MaterialPageRoute(builder: (context)=>const Login()));
                     },
                     style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
                       minimumSize: const Size(165, 50), // Mengatur ukuran minimum tombol
                     ),
-                    child: const Text('Lanjutkan'),
+                    child: const Text('Lanjutkan',
+                    style: TextStyle(
+                      color: Colors.black
+                    ),),
                   ),
                   ],
                 ),

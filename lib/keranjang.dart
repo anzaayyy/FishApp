@@ -67,6 +67,32 @@ class _KeranjangState extends State<Keranjang> {
   }
 }
 
+Future<void> cancelPenyewaan(String kodeBarang, int jumlah1, int jumlah2, String kodeSewa) async {
+  final String apiUrl = 'http://10.0.2.2:8000/api/cancel/$kodeBarang/$jumlah1/$jumlah2/$kodeSewa';
+
+  try {
+    final response = await http.post(
+      Uri.parse(apiUrl),
+      headers: {'Authorization': 'Bearer ${widget.token}'},
+    );
+
+    if (response.statusCode == 200) {
+      // Pembatalan penyewaan berhasil
+      print('Penyewaan berhasil dibatalkan');
+      // Perbarui UI atau lakukan tindakan lain sesuai kebutuhan
+      fetchData();
+    } else if (response.statusCode == 404) {
+      // Penyewaan tidak ditemukan
+      print('Penyewaan tidak ditemukan');
+    } else {
+      // Tangani error lainnya
+      print('Error: ${response.statusCode}');
+    }
+  } catch (e) {
+    // Tangani kesalahan jaringan atau lainnya
+    print('Error pembatalan penyewaan: $e');
+  }
+}
 
 
   @override
@@ -230,7 +256,14 @@ class _KeranjangState extends State<Keranjang> {
                             padding: const EdgeInsets.only(right: 10, left: 10),
                             child: Row(
                                       children: [
-                                        ElevatedButton(onPressed: (){},
+                                        ElevatedButton(onPressed: (){
+                                          final kodeBarang = data[index]['kode_barang'] ?? '';
+    final jumlah1 = data[index]['jumlah'] ?? 0;
+    final jumlah2 = data[index]['jumlah2'] ?? 0;
+    final kodeSewa = data[index]['kode_sewa'] ?? '';
+
+                                          cancelPenyewaan(kodeBarang, jumlah1, jumlah2, kodeSewa);
+                                        },
                                         style: ElevatedButton.styleFrom(
                                         minimumSize: const Size(60, 20),
                                         backgroundColor: const Color.fromARGB(255, 252, 43, 28)
@@ -239,6 +272,7 @@ class _KeranjangState extends State<Keranjang> {
                                         style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,
+                                          color: Colors.white
                                         ),
                                         ),
                                       ),
@@ -252,12 +286,14 @@ class _KeranjangState extends State<Keranjang> {
                                         );
                                       },
                                         style: ElevatedButton.styleFrom(
+                                          backgroundColor: Colors.blue,
                                         minimumSize: const Size(60, 20), // Sesuaikan lebar dan tinggi sesuai kebutuhan Anda
                                         ),
                                         child: const Text('Hubungi pemilik',
                                         style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,
+                                          color: Colors.white
                                         ),
                                         ),
                                       ),

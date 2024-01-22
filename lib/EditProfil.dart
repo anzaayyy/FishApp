@@ -37,10 +37,8 @@ late Map<String, dynamic> detailPengguna = {};
     super.initState();
     detailPengguna = {};
     ambilDetailPengguna();
-    
   }
-
-  Future<void> ambilDetailPengguna() async {
+Future<void> ambilDetailPengguna() async {
     detailPengguna = await UserHelper.ambilDetailPengguna(widget.token);
     nameController.text = detailPengguna['name'] ?? '';
     alamatController.text = detailPengguna['alamat'] ?? '';
@@ -48,7 +46,6 @@ late Map<String, dynamic> detailPengguna = {};
     
     setState(() {});
   }
-
 Future<void> updateUser(String name, String alamat, String notelepon) async {
   String apiUrl = 'http://10.0.2.2:8000/api/update';
 
@@ -78,6 +75,7 @@ Future<void> updateUser(String name, String alamat, String notelepon) async {
   Widget build(BuildContext context) { 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue,
       title: const Text("Edit Profil"),
       leading: IconButton(
         onPressed: () {
@@ -243,6 +241,8 @@ Future<void> updateUser(String name, String alamat, String notelepon) async {
                         children: [
                           Expanded( 
                             child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.blue,),
                               onPressed: () {
   // Dapatkan nilai dari bidang teks
   String name = nameController.text; // Implementasikan fungsi untuk mendapatkan nama dari bidang teks
@@ -253,7 +253,8 @@ Future<void> updateUser(String name, String alamat, String notelepon) async {
   updateUser(name, alamat, notelepon);
   Navigator.pop(context);
 },
-                              child: const Text("SIMPAN")
+                              child: const Text("SIMPAN",
+                              style: TextStyle(color: Colors.white),)
                               ),
                           ),
                           

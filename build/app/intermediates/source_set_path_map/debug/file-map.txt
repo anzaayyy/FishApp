@@ -8,18 +8,20 @@ com.example.flutter_application_1.app-jetified-annotation-experimental-1.3.0-6 C
 com.example.flutter_application_1.app-jetified-activity-1.7.2-7 C:\Users\user\.gradle\caches\transforms-3\a82db410cebe27c9879106e746eca4ec\transformed\jetified-activity-1.7.2\res
 com.example.flutter_application_1.app-jetified-window-java-1.0.0-beta04-8 C:\Users\user\.gradle\caches\transforms-3\ae81e06d24c799147c26814497a2a305\transformed\jetified-window-java-1.0.0-beta04\res
 com.example.flutter_application_1.app-core-1.10.1-9 C:\Users\user\.gradle\caches\transforms-3\c4988ff80110f75080a936fc6f044848\transformed\core-1.10.1\res
-com.example.flutter_application_1.app-jetified-startup-runtime-1.1.1-10 C:\Users\user\.gradle\caches\transforms-3\d2a7f03e118140f639e8945afb58cddb\transformed\jetified-startup-runtime-1.1.1\res
-com.example.flutter_application_1.app-lifecycle-viewmodel-2.6.1-11 C:\Users\user\.gradle\caches\transforms-3\d5cb841d085c8da3ed38e468f997390f\transformed\lifecycle-viewmodel-2.6.1\res
-com.example.flutter_application_1.app-core-runtime-2.2.0-12 C:\Users\user\.gradle\caches\transforms-3\db3ce0e4102f75753fdc0e9c2753a822\transformed\core-runtime-2.2.0\res
-com.example.flutter_application_1.app-lifecycle-runtime-2.6.1-13 C:\Users\user\.gradle\caches\transforms-3\e97fce397db1acf9b6f475dedfc7d654\transformed\lifecycle-runtime-2.6.1\res
-com.example.flutter_application_1.app-lifecycle-livedata-core-2.6.1-14 C:\Users\user\.gradle\caches\transforms-3\eed11806d4af25229ebcb855da7e9479\transformed\lifecycle-livedata-core-2.6.1\res
-com.example.flutter_application_1.app-debug-15 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\android\app\src\debug\res
-com.example.flutter_application_1.app-main-16 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\android\app\src\main\res
-com.example.flutter_application_1.app-pngs-17 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\app\generated\res\pngs\debug
-com.example.flutter_application_1.app-resValues-18 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\app\generated\res\resValues\debug
-com.example.flutter_application_1.app-rs-19 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\app\generated\res\rs\debug
-com.example.flutter_application_1.app-mergeDebugResources-20 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
-com.example.flutter_application_1.app-mergeDebugResources-21 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
-com.example.flutter_application_1.app-merged_res-22 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\app\intermediates\merged_res\debug
-com.example.flutter_application_1.app-packaged_res-23 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\flutter_plugin_android_lifecycle\intermediates\packaged_res\debug
-com.example.flutter_application_1.app-packaged_res-24 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\image_picker_android\intermediates\packaged_res\debug
+com.example.flutter_application_1.app-browser-1.5.0-10 C:\Users\user\.gradle\caches\transforms-3\d12883dde0390e08dd2a1192741cec1b\transformed\browser-1.5.0\res
+com.example.flutter_application_1.app-jetified-startup-runtime-1.1.1-11 C:\Users\user\.gradle\caches\transforms-3\d2a7f03e118140f639e8945afb58cddb\transformed\jetified-startup-runtime-1.1.1\res
+com.example.flutter_application_1.app-lifecycle-viewmodel-2.6.1-12 C:\Users\user\.gradle\caches\transforms-3\d5cb841d085c8da3ed38e468f997390f\transformed\lifecycle-viewmodel-2.6.1\res
+com.example.flutter_application_1.app-core-runtime-2.2.0-13 C:\Users\user\.gradle\caches\transforms-3\db3ce0e4102f75753fdc0e9c2753a822\transformed\core-runtime-2.2.0\res
+com.example.flutter_application_1.app-lifecycle-runtime-2.6.1-14 C:\Users\user\.gradle\caches\transforms-3\e97fce397db1acf9b6f475dedfc7d654\transformed\lifecycle-runtime-2.6.1\res
+com.example.flutter_application_1.app-lifecycle-livedata-core-2.6.1-15 C:\Users\user\.gradle\caches\transforms-3\eed11806d4af25229ebcb855da7e9479\transformed\lifecycle-livedata-core-2.6.1\res
+com.example.flutter_application_1.app-debug-16 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\android\app\src\debug\res
+com.example.flutter_application_1.app-main-17 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\android\app\src\main\res
+com.example.flutter_application_1.app-pngs-18 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\app\generated\res\pngs\debug
+com.example.flutter_application_1.app-resValues-19 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\app\generated\res\resValues\debug
+com.example.flutter_application_1.app-rs-20 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\app\generated\res\rs\debug
+com.example.flutter_application_1.app-mergeDebugResources-21 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.example.flutter_application_1.app-mergeDebugResources-22 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.example.flutter_application_1.app-merged_res-23 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\app\intermediates\merged_res\debug
+com.example.flutter_application_1.app-packaged_res-24 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\flutter_plugin_android_lifecycle\intermediates\packaged_res\debug
+com.example.flutter_application_1.app-packaged_res-25 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\image_picker_android\intermediates\packaged_res\debug
+com.example.flutter_application_1.app-packaged_res-26 C:\Users\user\Documents\KULIAH\KULIAH SEASON 3\PBL\FishApp\build\url_launcher_android\intermediates\packaged_res\debug
